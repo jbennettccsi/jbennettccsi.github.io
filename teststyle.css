@@ -11,6 +11,9 @@ body {
   margin: 0;
   padding: 0;
 }
+
 p {
-	color: green;
+  font-family: verdana;
+  font-size: 20px;
+  color: green;
 }
