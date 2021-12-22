@@ -1,47 +1,51 @@
-require([
-      "esri/portal/Portal",
-      "esri/identity/OAuthInfo",
-      "esri/identity/IdentityManager"
-    ], function (Portal, OAuthInfo, esriId) {
+function initPano() {
+  // Set up Street View and initially set it visible. Register the
+  // custom panorama provider function. Set the StreetView to display
+  // the custom panorama 'reception' which we check for below.
+  const panorama = new google.maps.StreetViewPanorama(
+    document.getElementById("map"),
+    { pano: "reception", visible: true }
+  );
 
-      const info = new OAuthInfo({
-        appId: "q3yu8yxxzdbg5Grz",
-        popup: false // the default
-      });
-      esriId.registerOAuthInfos([info]);
+  panorama.registerPanoProvider(getCustomPanorama);
+}
 
-      esriId
-        .checkSignInStatus(info.portalUrl + "/sharing")
-        .then(() => {
-          handleSignedIn();
-        })
+// Return a pano image given the panoID.
+function getCustomPanoramaTileUrl(pano, zoom, tileX, tileY) {
+  return (
+    "https://developers.google.com/maps/documentation/javascript/examples/full/images/" +
+    "panoReception1024-" +
+    zoom +
+    "-" +
+    tileX +
+    "-" +
+    tileY +
+    ".jpg"
+  );
+}
 
-        .catch(() => {
-          handleSignedOut();
-
-        });
-
-      document.getElementById("sign-in").addEventListener("click", function () {
-        esriId.getCredential(info.portalUrl + "/sharing");
-      });
-
-      document.getElementById("sign-out").addEventListener("click", function () {
-        esriId.destroyCredentials();
-        window.location.reload();
-      });
-
-      function handleSignedIn() {
-
-        const portal = new Portal();
-        portal.load().then(() => {
-          const results = { name: portal.user.fullName, username: portal.user.username };
-          document.getElementById("results").innerText = JSON.stringify(results, null, 2);
-        });
-
-      }
-
-      function handleSignedOut() {
-        document.getElementById("results").innerText = 'Signed Out'
-      }
-
-    });
+// Construct the appropriate StreetViewPanoramaData given
+// the passed pano IDs.
+function getCustomPanorama(pano) {
+  if (pano === "reception") {
+    return {
+      location: {
+        pano: "reception",
+        description: "Google Sydney - Reception",
+      },
+      links: [],
+      // The text for the copyright control.
+      copyright: "Imagery (c) 2010 Google",
+      // The definition of the tiles for this panorama.
+      tiles: {
+        tileSize: new google.maps.Size(1024, 512),
+        worldSize: new google.maps.Size(2048, 1024),
+        // The heading in degrees at the origin of the panorama
+        // tile set.
+        centerHeading: 105,
+        getTileUrl: getCustomPanoramaTileUrl,
+      },
+    };
+  }
+  return null;
+}

@@ -1,34 +1,19 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Custom Street View Panoramas</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="teststyle.css" />
+    <script src="testjs.js"></script>
+  </head>
+  <body>
+    <div id="map"></div>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
-  <title>ArcGIS API for JavaScript Tutorials: Authenticate with an ArcGIS identity</title>
-
-
-  <link rel="stylesheet" href="https://js.arcgis.com/4.22/esri/themes/light/main.css">
-  <script src="https://js.arcgis.com/4.22/"></script>
-  <script src="testjs.js"></script>
-  <script src="http://maps.google.com/maps?file=api&v=2&key=AIzaSyDA77uTFEGVBPVygRmOjrTqFvf-2gdpp-w" type="text/javascript"></script>
-  <script src="http://alderaan.arc.nasa.gov/maps/nasamaps.js" type="text/javascript"></script>
-
-  <style>
-    html,
-    body {
-      font-size: 150%;
-      margin: 10vh 10vw;
-    }
-  </style>
-
-</head>
-
-<body>
-
-  <button id="sign-in" class="btn btn-primary">Sign In</button>
-  <button id="sign-out" class="btn btn-primary">Sign Out</button>
-  <pre><code id="results"></code></pre>
-
-</body>
-
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA77uTFEGVBPVygRmOjrTqFvf-2gdpp-w&callback=initPano&v=weekly"
+      async
+    ></script>
+	<p>Wha??</p>
+  </body>
 </html>
