@@ -7,7 +7,7 @@
 
   ], function(esriConfig,Map, MapView, FeatureLayer) {
 
-  esriConfig.apiKey = "q3yu8yxxzdbg5Grz";
+  esriConfig.apiKey = "AAPKcb4e9f06e3e14bc087a75d0cd0e90ed8E9Fp-hjVMRneNabPlLRw_NvneSA8LuafesQ25Rk5zTb2tQFjJVgPPH7bhAP3eltH";
 
   const map = new Map({
     basemap: "arcgis-imagery"
