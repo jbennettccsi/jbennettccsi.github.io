@@ -22,21 +22,21 @@
 
 //Trailheads feature layer (points)
   const trailheadsLayer = new FeatureLayer({
-    url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trailheads/FeatureServer/0"
+    url: "https://services6.arcgis.com/uUNS2ciCcjNBnb3f/arcgis/rest/services/NED_Small_Cell/FeatureServer/0"
   });
 
   map.add(trailheadsLayer);
 
 //Trails feature layer (lines)
   const trailsLayer = new FeatureLayer({
-    url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trails/FeatureServer/0"
+    url: "https://services6.arcgis.com/uUNS2ciCcjNBnb3f/arcgis/rest/services/NED_Fiber_Routes/FeatureServer/0"
   });
 
   map.add(trailsLayer, 0);
 
 // Parks and open spaces (polygons)
   const parksLayer = new FeatureLayer({
-    url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Parks_and_Open_Space/FeatureServer/0"
+    url: "https://services6.arcgis.com/uUNS2ciCcjNBnb3f/arcgis/rest/services/Area_Notes/FeatureServer/0"
   });
 
   map.add(parksLayer, 0);
