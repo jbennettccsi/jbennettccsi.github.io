@@ -10,7 +10,7 @@
   esriConfig.apiKey = "q3yu8yxxzdbg5Grz";
 
   const map = new Map({
-    basemap: "arcgis-topographic"
+    basemap: "arcgis-imagery"
   });
 
   const view = new MapView({
