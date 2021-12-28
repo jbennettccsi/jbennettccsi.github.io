@@ -9,7 +9,7 @@ html, body, #viewDiv {
 	position: relative;
 }
 
-button, #results {
+#results {
 	color: royalblue;
 	font-size: 150%;
 	margin: auto;
