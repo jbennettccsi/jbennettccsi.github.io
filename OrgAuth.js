@@ -61,7 +61,7 @@ require([
 
     //Points
   const trailheadsLayer = new FeatureLayer({
-    url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trailheads/FeatureServer/0"
+    url: "https://services6.arcgis.com/uUNS2ciCcjNBnb3f/arcgis/rest/services/NED_Small_Cell/FeatureServer/0"
   });
   map.add(trailheadsLayer);
 
