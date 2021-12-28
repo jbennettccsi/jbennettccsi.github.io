@@ -15,6 +15,43 @@ require([
     basemap: "arcgis-topographic"
   });
 
+    //Start Authentication stuff
+    const info = new OAuthInfo({
+        appId: "q3yu8yxxzdbg5Grz",
+        popup: false  //What does this do?
+    });
+    esriId.registerOAuthInfos([info]);
+  
+    esriId.checkSignInStatus(info.portalUrl + "/sharing").then(() => {
+      handleSignedIn();
+    })
+  
+    .catch(() => {
+        handleSignedOut
+    });
+  
+    document.getElementById("sign-in").addEventListener("click", function () {
+      esriId.getCredential(info.portalUrl + "/sharing");
+    });
+  
+    document.getElementById("sign-out").addEventListener("click", function () {
+      esriId.destroyCredentials();
+      window.location.reload();
+    });
+  
+    function handleSignedIn() {
+      const portal = new Portal();
+      portal.load().then(() => {
+        const results = { name: portal.user.fullName, username: portal.user.username };
+        document.getElementById("results").innerText = JSON.stringify(results, null, 2);
+      });
+    }
+  
+    function handleSignedOut() {
+      document.getElementById("results").innerText = 'Signed Out'
+    }
+    //End Authentication stuff
+
   const view = new MapView({
     container: "viewDiv",  //This is the DIV in HTML that displays map
     map: map,
@@ -40,41 +77,7 @@ require([
   });
   map.add(parksLayer, 0);
 
-  //Start Authentication stuff
-  const info = new OAuthInfo({
-      appId: "q3yu8yxxzdbg5Grz",
-      popup: false  //What does this do?
-  });
-  esriId.registerOAuthInfos([info]);
 
-  esriId.checkSignInStatus(info.portalUrl + "/sharing").then(() => {
-    handleSignedIn();
-  })
-
-  .catch(() => {
-      handleSignedOut
-  });
-
-  document.getElementById("sign-in").addEventListener("click", function () {
-    esriId.getCredential(info.portalUrl + "/sharing");
-  });
-
-  document.getElementById("sign-out").addEventListener("click", function () {
-    esriId.destroyCredentials();
-    window.location.reload();
-  });
-
-  function handleSignedIn() {
-    const portal = new Portal();
-    portal.load().then(() => {
-      const results = { name: portal.user.fullName, username: portal.user.username };
-      document.getElementById("results").innerText = JSON.stringify(results, null, 2);
-    });
-  }
-
-  function handleSignedOut() {
-    document.getElementById("results").innerText = 'Signed Out'
-  }
 
 });
 
