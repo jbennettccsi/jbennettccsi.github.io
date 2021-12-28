@@ -14,27 +14,27 @@ require([
   });
 
   const view = new MapView({
-    container: "viewDiv",
+    container: "viewDiv",  //This is the div in HTLM that displays map
     map: map,
-    center: [-118.80543,34.02700],
+    center: [-118.80543,34.02700],  //-87.747 41.963
     zoom: 13
   });
 
-//Trailheads feature layer (points)
+    //Points
   const trailheadsLayer = new FeatureLayer({
     url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trailheads/FeatureServer/0"
   });
 
   map.add(trailheadsLayer);
 
-//Trails feature layer (lines)
+    //Polylines
   const trailsLayer = new FeatureLayer({
     url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trails/FeatureServer/0"
   });
 
   map.add(trailsLayer, 0);
 
-// Parks and open spaces (polygons)
+    //Polygons
   const parksLayer = new FeatureLayer({
     url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Parks_and_Open_Space/FeatureServer/0"
   });
