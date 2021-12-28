@@ -18,7 +18,7 @@ require([
     //Start Authentication stuff
     const info = new OAuthInfo({
         appId: "q3yu8yxxzdbg5Grz",
-        popup: false  //What does this do?
+        popup: true  //What does this do?
     });
     esriId.registerOAuthInfos([info]);
   
