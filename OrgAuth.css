@@ -4,3 +4,12 @@ html, body, #viewDiv {
 	height: 95%;
 	width: 95%; 
 }
+
+button, #results {
+	color: royalblue;
+	font-size: 150%;
+	margin: auto;
+	width: 50%;
+	position: absolute;
+	bottom: 0;
+}
