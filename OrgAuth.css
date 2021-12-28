@@ -5,6 +5,10 @@ html, body, #viewDiv {
 	width: 95%; 
 }
 
+#authButtons {
+	position: relative;
+}
+
 button, #results {
 	color: royalblue;
 	font-size: 150%;
