@@ -1,4 +1,4 @@
-require(["esri/config", "esri/Map", "esri/views/MapView", "esri/layer/FeatureLayer"],
+require(["esri/config", "esri/Map", "esri/views/MapView", "esri/layers/FeatureLayer"],
     function(esriConfig, Map, MapView, FeatureLayer) {
 
         esriConfig.apiKey = "AAPKcb4e9f06e3e14bc087a75d0cd0e90ed8E9Fp-hjVMRneNabPlLRw_NvneSA8LuafesQ25Rk5zTb2tQFjJVgPPH7bhAP3eltH";
