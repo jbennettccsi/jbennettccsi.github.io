@@ -15,7 +15,7 @@ require([
         //Check to see if user is logged in
         esriId.checkSignInStatus(info.portalUrl + "/sharing").then(() => {
             displayItems();
-        }).catch(/*code that allows user to sign in*/);
+        }).catch(SignIn());
 
         //Retrieve user credentials
         esriId.getCredential(info.portalUrl + "/sharing");
@@ -24,17 +24,19 @@ require([
         //esriId.destroyCredentials();
 
         //Create portal
-        const portal = new Portal();
-        portal.authMode = "immediate";  //signs user in when loaded??
-        portal.load().then(() => {
-            //Query portal for items to display
-            const portalQueryParams = new PortalQueryParams({
-                query: "owner:" + portal.user.username,
-                sortField: "numViews",
-                sortOrder: "desc",
-                num: 100
+        function SignIn(){
+            const portal = new Portal();
+            portal.authMode = "immediate";  //signs user in when loaded??
+            portal.load().then(() => {
+                //Query portal for items to display
+                const portalQueryParams = new PortalQueryParams({
+                    query: "owner:" + portal.user.username,
+                    sortField: "numViews",
+                    sortOrder: "desc",
+                    num: 100
+                });
+                portal.queryItems(portalQueryParams).then(createGallery);
             });
-            portal.queryItems(portalQueryParams).then(createGallery);
-        });
+        }
     }
 );
